@@ -1,0 +1,40 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace _02.A_Miner_Task
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Dictionary<string, int> quntityByResource = new Dictionary<string, int>();
+
+            while (true)
+            {
+                string line = Console.ReadLine();
+
+                if(line == "stop")
+                {
+                    break;
+                }
+
+                int quntity = int.Parse(Console.ReadLine());
+
+                if (quntityByResource.ContainsKey(line))
+                {
+                    quntityByResource[line] += quntity;
+                }
+                else
+                {
+                    quntityByResource.Add(line, quntity);
+                }
+            }
+
+            foreach (var goodJob in quntityByResource)
+            {
+                Console.WriteLine($"{goodJob.Key} -> {goodJob.Value}");
+            }
+        }
+    }
+}
